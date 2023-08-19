@@ -1,0 +1,791 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Oracle 数据库从入门到精通（一） | IMQL.LIFE</title><meta name="author" content="ql"><meta name="copyright" content="ql"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Oracle 数据库，又名 Oracle RDBMS，或简称 Oracle。是甲骨文公司的一款关系型数据库管理系统。它是在数据库领域一直处于领先地位的产品。可以说 Oracle 数据库是目前世界上最流行的关系型数据库管理系统之一，系统可移植性好、使用方便、功能强，适用于各类大、中、小微机环境。它是一种高效率的、可靠性好的、适应高吞吐量的数据库方案。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle 数据库从入门到精通（一）">
+<meta property="og:url" content="https://www.imql.life/2020/02/29/Oracle_Database_Learning_1/index.html">
+<meta property="og:site_name" content="IMQL.LIFE">
+<meta property="og:description" content="Oracle 数据库，又名 Oracle RDBMS，或简称 Oracle。是甲骨文公司的一款关系型数据库管理系统。它是在数据库领域一直处于领先地位的产品。可以说 Oracle 数据库是目前世界上最流行的关系型数据库管理系统之一，系统可移植性好、使用方便、功能强，适用于各类大、中、小微机环境。它是一种高效率的、可靠性好的、适应高吞吐量的数据库方案。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.imql.life/Oracle.jpg">
+<meta property="article:published_time" content="2020-02-29T10:22:37.000Z">
+<meta property="article:modified_time" content="2023-08-12T03:15:15.000Z">
+<meta property="article:author" content="ql">
+<meta property="article:tag" content="VMware Workstation">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="openEuler">
+<meta property="article:tag" content="Oracle Database">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.imql.life/Oracle.jpg"><link rel="shortcut icon" href="https://img.imql.life/www.svg"><link rel="canonical" href="https://www.imql.life/2020/02/29/Oracle_Database_Learning_1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Oracle 数据库从入门到精通（一）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-12 11:15:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="/css/notoserifsc.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 阅读</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.imql.life/Oracle.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="IMQL.LIFE"><span class="site-name">IMQL.LIFE</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 阅读</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Oracle 数据库从入门到精通（一）<a class="post-edit-link" href="https://github.dev/ql-isaac/www#_posts/Oracle 数据库从入门到精通（一）.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-02-29T10:22:37.000Z" title="发表于 2020-02-29 18:22:37">2020-02-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-12T03:15:15.000Z" title="更新于 2023-08-12 11:15:15">2023-08-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Oracle-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/">Oracle 数据库从入门到精通</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="Oracle 数据库从入门到精通（一）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/02/29/Oracle_Database_Learning_1/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Oracle 数据库，又名 Oracle RDBMS，或简称 Oracle。是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%94%B2%E9%AA%A8%E6%96%87%E5%85%AC%E5%8F%B8/430115">甲骨文公司</a>的一款<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/11032386">关系型数据库管理系统</a>。它是在数据库领域一直处于领先地位的产品。可以说 Oracle 数据库是目前世界上最流行的关系型数据库管理系统之一，系统可移植性好、使用方便、功能强，适用于各类大、中、小微机环境。它是一种高效率的、可靠性好的、适应高吞吐量的数据库方案。</p>
+<span id="more"></span>
+<h2 id="下载">下载<a class="headerlink" href="#下载"></a></h2>
+<p>访问官方<a target="_blank" rel="noopener" href="https://www.oracle.com/database/technologies/oracle-database-software-downloads.html">Oracle Database 11g Release 2 下载地址</a>下载即可，注意有两个压缩包，下好后分别右键解压到当前目录，这样就得到了安装文件夹 database。</p>
+<h2 id="Windows_中的安装（试验）">Windows 中的安装（试验）<a class="headerlink" href="#Windows_中的安装（试验）"></a></h2>
+<ol>
+<li>打开 database 文件夹，双击 setup.exe 安装，刚开始有一个如下图的错误，解决办法是编辑 database 下的 stage 下的 cvu 下的 cvu_prereq.xml，在 &lt;CERTIFIED_SYSTEMS&gt;&lt;/CERTIFIED_SYSTEMS&gt; 间的最后位置添加以下代码，保存并关闭，重新安装即可。</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/9cbcbb0ab24cfeedc4b7d32bfc081831.png" alt="错误.png"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">OPERATING_SYSTEM</span> <span class="attr">RELEASE</span>=<span class="string">&quot;6.2&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">VERSION</span> <span class="attr">VALUE</span>=<span class="string">&quot;3&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ARCHITECTURE</span> <span class="attr">VALUE</span>=<span class="string">&quot;64-bit&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">NAME</span> <span class="attr">VALUE</span>=<span class="string">&quot;Windows 10&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ENV_VAR_LIST</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ENV_VAR</span> <span class="attr">NAME</span>=<span class="string">&quot;PATH&quot;</span> <span class="attr">MAX_LENGTH</span>=<span class="string">&quot;1023&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ENV_VAR_LIST</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">OPERATING_SYSTEM</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>不更新，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/d6b6503cc911bf779b12b11719b12c3c.png" alt="不更新.png"></p>
+<ol start="3">
+<li>直接下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/f936ba2a2bc3f42c21a57ae2ac23fc48.png" alt="创建.png"></p>
+<ol start="4">
+<li>选择服务器类，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/28ec4b944c432fdc60e75a76a4865d43.png" alt="服务器类.png"></p>
+<ol start="5">
+<li>直接下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/87d9077b6eaaae1bed20505c4303b1da.png" alt="单实例.png"></p>
+<ol start="6">
+<li>选择高级安装，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/7adddb02e30eec83574055d9d2f180b7.png" alt="高级安装.png"></p>
+<ol start="7">
+<li>默认即可，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/23feb2079402e442f37ce4d318fe2856.png" alt="语言.png"></p>
+<ol start="8">
+<li>就选择企业版，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/591002452978b5655e39c274030db687.png" alt="企业版.png"></p>
+<ol start="9">
+<li>默认即可，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/c85f848a19cacab7ec849bb72985ef36.png" alt="默认即可.png"></p>
+<ol start="10">
+<li>默认即可，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/847db7b0444b8f81ff9707e28b75fb44.png" alt="下一步.png"></p>
+<ol start="11">
+<li>自定义 SID 的名称，不改，就默认也行；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/4b1d62220097d1bb830920d7482fdb3c.png" alt="自定义SID的名称.png"></p>
+<ol start="12">
+<li>使用 Unicode 字符集；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/56e4a294745a787a266c6eb3ed295beb.png" alt="Unicode.png"></p>
+<ol start="13">
+<li>勾选创建具有示例方案的数据库，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/4329a29ade7d592ce3f5137b55ba3fb5.png" alt="创建具有示例方案的数据库.png"></p>
+<ol start="14">
+<li>默认即可，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/dbb8e5bc935e3780245f9c2878f8ece7.png" alt="过.png"></p>
+<ol start="15">
+<li>默认即可，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/de14134acaa3ab65aa1cee353ae393f3.png" alt="再过.png"></p>
+<ol start="16">
+<li>不启动自动备份，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/33013940fc50f3e69fb8c754253512be.png" alt="不自动备份.png"></p>
+<ol start="17">
+<li>个人学习用，为了方便，选择对所有账户使用相同的口令（口令必须以字母开头），下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/699b540900965bb168f0b0ac50d26e1c.png" alt="设置口令.png"></p>
+<ol start="18">
+<li>检查到错误，可以忽略，勾选全部忽略，下一步；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/86ad81fe84257e4d2c991fb94673af7f.png" alt="检查到错误.png"></p>
+<ol start="19">
+<li>点击完成，等待；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/e340fe1278d73b0d6499bd94755d29d4.png" alt="等待.png"></p>
+<ol start="20">
+<li>点击口令管理；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/eef8a835cd7c67259f844e24e97f5485.png" alt="口令管理.png"></p>
+<ol start="21">
+<li>设置 SYS 用户密码为 change_on_install，设置 SYSTEM 用户密码为 manager，解锁 SCOTT 用户并设置密码为 tiger，解锁 SH 用户并设置密码为 sh；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/a15ee76a72779bec7fbfdc002a7a2e16.png" alt="是.png"></p>
+<ol start="22">
+<li>安装完成；</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/8e10647a76d84bb23da8848e1b4b2494.png" alt="完成.png"></p>
+<h2 id="SQL_PLUS_的使用">SQL PLUS 的使用<a class="headerlink" href="#SQL_PLUS_的使用"></a></h2>
+<h3 id="登录_SCOTT_用户">登录 SCOTT 用户<a class="headerlink" href="#登录_SCOTT_用户"></a></h3>
+<p>命令行 CMD 里输入 sqlplus，输入 scott，再输入密码 tiger（不会回显），即可登录 SCOTT 用户。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/4d54a3a8888faa6127189fe4ae76b8d9.gif" alt="登录scott用户.gif"></p>
+<h3 id="第一次查询">第一次查询<a class="headerlink" href="#第一次查询"></a></h3>
+<p>数据库最重要的组成对象是表，登录上 SCOTT 用户后，首先通过以下命令查询一下该用户有哪些表吧。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> TAB;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/36d5ea105c5d84ba1c09fc4fb162902a.gif" alt="第一次查询.gif">
+呃，查询结果显示得比较乱，有一个命令可以解决这个问题，如下，设置每行显示的数据长度，执行完这个命令后再查询一下 SCOTT 用户有哪些表看看。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET LINESIZE 100</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/8b704d98d4a5fe2aad78efc79cc3f91b.gif" alt="显示问题.gif">
+呃，如果觉得 TNAME 列的数据所占的长度太长了，有一个命令可以解决这个问题，如下，设置 TNAME 列的数据所占的长度，执行完这个命令后再查询一下 SCOTT 用户有哪些表看看。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COL TNAME FOR A20</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/44c29b688c3275865e98d0a52d7845df.gif" alt="太长了.gif">
+终于，能很舒服地查看到 SCOTT 用户下有四个表：BONUS、DEPT、EMP 和 SALGRADE。那么，再查询一下 DEPT 表吧。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> DEPT;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/1c7320f709ef054651820500f050fe0e.gif" alt="再查询一下DEPT表.gif"></p>
+<h3 id="切换用户">切换用户<a class="headerlink" href="#切换用户"></a></h3>
+<p>换个用户登录是怎样的命令？如下命令格式，其中<code>[]</code>表示可选内容，<code>|</code>表示多选一。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONN[ECT] 用户名/密码 [AS SYSDBA|SYSUSER]</span><br></pre></td></tr></table></figure>
+<p>登录 SYS 用户看看，由于 SYS 是超级管理员用户，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONN SYS/change_on_install AS SYSDBA</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/e55c8364facc5b7fe8dda63121f2f9c6.png" alt="切换到sys用户.png">
+登录 SYSTEM 用户看看，由于 SYSTEM 是普通管理员用户，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONN SYSTEM/manager</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/ec9dee24372800541c77fbaa824c635f.png" alt="切换到system用户.png">
+SYSTEM 用户和 SYS 用户都是管理员，应该是可以查询到 SCOTT 用户的 DEPT 表的，来试试。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> DEPT;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/78d43e0fa461a3da43e95cccdcb8afbf.png" alt="表或视图不存在.png">
+来确认一下当前用户是否是管理员用户。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW USER</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/4891eca420ce091258299c8f4aa60bf9.png" alt="SHOWUSER.png">
+这就奇怪了，难道不能查询到？原来，是需要在表前指定用户。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> SCOTT.DEPT;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/8123b6bd896f8c7d24a33dadacbb6563.png" alt="加用户名.png"></p>
+<h2 id="SQL">SQL<a class="headerlink" href="#SQL"></a></h2>
+<p>关系型数据库的理论诞生之后，世界上出现了许多的关系型数据库管理系统，熟悉了 A 关系型数据库管理系统后几乎还得重新学 B 关系型数据库管理系统，这很大程度上是由于每个关系型数据库管理系统都实现了自己的一套语言，语言只是一种工具，弄那么多套语言毫无意义，于是，SQL（Structured Query Language，即结构化查询语言）作为一个标准和一个功能强大的关系型数据库语言诞生了。
+SQL 分为以下几类：</p>
+<ul>
+<li>DML（Data Manipulation Language，数据操作语言）：数据查询（SELECT)、数据更新（UPDATE、INSERT 和 DELETE）和事务管理等。</li>
+<li>DDL（Data Definition Language，数据定义语言）：数据对象定义等（用户和数据表等）。</li>
+<li>DCL（Data Control Language，数据控制语言）：授权等。</li>
+</ul>
+<h2 id="SCOTT_的数据表分析">SCOTT 的数据表分析<a class="headerlink" href="#SCOTT_的数据表分析"></a></h2>
+<p>在 Oracle 11g 以前 SCOTT 和其数据表等是会默认给用户提供的，如果在以上安装 Oracle 11g 的步骤 13 中未勾选创建具有示例方案的数据库，我们就需要手动执行一个脚本，该脚本在如下路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\app\ql\product\11.2.0\dbhome_1\RDBMS\ADMIN\scott.sql</span><br></pre></td></tr></table></figure>
+<h3 id="部门信息表（DEPT">部门信息表（DEPT)<a class="headerlink" href="#部门信息表（DEPT"></a></h3>
+<p>先切换回 SCOTT 用户：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONN SCOTT/tiger</span><br></pre></td></tr></table></figure>
+<p>查询 DEPT</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> DEPT;</span><br></pre></td></tr></table></figure>
+<p>查看数据表的结构的语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC 数据表;</span><br></pre></td></tr></table></figure>
+<p>查看 DEPT 的结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC DEPT;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/db27a795564e07a020bdcbb016eed049.png" alt="DEPT的结构.png">
+DEPT 的结构解释：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>类型</th>
+<th>类型作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEPTNO</td>
+<td>部门编号</td>
+<td>NUMBER(2)</td>
+<td>最多 2 位数字</td>
+<td></td>
+</tr>
+<tr>
+<td>DNAME</td>
+<td>部门名称</td>
+<td>VARCHAR2(14)</td>
+<td>最多 14 位字符</td>
+<td>3 位字符保存中文</td>
+</tr>
+<tr>
+<td>LOC</td>
+<td>部门位置</td>
+<td>VARCHAR2(13)</td>
+<td>最多 13 为字符</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="雇员信息表（EMP）">雇员信息表（EMP）<a class="headerlink" href="#雇员信息表（EMP）"></a></h3>
+<p>查询 EMP：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> EMP;</span><br></pre></td></tr></table></figure>
+<p>同样有显示问题，设置一行的长度为 150：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET LINESIZE 150</span><br></pre></td></tr></table></figure>
+<p>再查询 EMP：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/fe0de0c3ab6e8ec2b0b94357641e112c.png" alt="EMP.png">
+查看 EMP 的结构：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESC</span> EMP;</span><br></pre></td></tr></table></figure>
+<p>EMP 的结构解释：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>类型</th>
+<th>类型作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EMPNO</td>
+<td>雇员编号</td>
+<td>NUMBER(4)</td>
+<td>最多 4 位数字</td>
+<td></td>
+</tr>
+<tr>
+<td>ENAME</td>
+<td>雇员姓名</td>
+<td>VARCHAR2(10)</td>
+<td>最多 10 位字符</td>
+<td></td>
+</tr>
+<tr>
+<td>JOB</td>
+<td>雇员职位</td>
+<td>VARCHAR2(9)</td>
+<td>最多 9 位字符</td>
+<td></td>
+</tr>
+<tr>
+<td>MGR</td>
+<td>领导编号</td>
+<td>NUMBER(4)</td>
+<td>最多 4 位数字</td>
+<td>领导本身也是雇员</td>
+</tr>
+<tr>
+<td>HIREDATE</td>
+<td>雇佣日期</td>
+<td>DATE</td>
+<td></td>
+<td>包含日期和时间</td>
+</tr>
+<tr>
+<td>SAL</td>
+<td>基本工资</td>
+<td>NUMBER(7,2)</td>
+<td>小数位最多 2 位，整数位最多 5 位</td>
+<td></td>
+</tr>
+<tr>
+<td>COMM</td>
+<td>佣金</td>
+<td>NUMBER(7,2)</td>
+<td>小数位最多 2 位，整数位最多 5 位</td>
+<td>只有销售职位的雇员才会存在有佣金</td>
+</tr>
+<tr>
+<td>DEPTNO</td>
+<td>部门编号</td>
+<td>NUMBER(2)</td>
+<td>最多 2 位数字</td>
+<td>雇员所在的部门编号</td>
+</tr>
+</tbody>
+</table>
+<h3 id="工资等级表（SALGRADE）">工资等级表（SALGRADE）<a class="headerlink" href="#工资等级表（SALGRADE）"></a></h3>
+<p>查询 SALGRADE：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> SALGRADE;</span><br></pre></td></tr></table></figure>
+<p>查看 SALGRADE 的结构：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESC</span> SALGRADE;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/d966bd263885c62ce5bbaf8911d60ef2.png" alt="SALGRADE.png">
+SALGRADE 的结构解释：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>类型</th>
+<th>类型作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRADE</td>
+<td>等级编号</td>
+<td>NUMBER</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LOSAL</td>
+<td>此等级的最低工资</td>
+<td>NUMBER</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>HISAL</td>
+<td>此等级的最高工资</td>
+<td>NUMBER</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="工资表（BONUS">工资表（BONUS)<a class="headerlink" href="#工资表（BONUS"></a></h3>
+<p>BONUS 表没有数据，只有表结构。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/38c59b2a4f3f4be5ae359c04163b580b.png" alt="BONUS.png">
+BONUS 的结构解释：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>类型</th>
+<th>类型作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ENAME</td>
+<td>雇员姓名</td>
+<td>VARCHAR2(10)</td>
+<td>最多 10 位字符</td>
+<td></td>
+</tr>
+<tr>
+<td>JOB</td>
+<td>职位</td>
+<td>VARCHAR2(9)</td>
+<td>最多 9 位字符</td>
+<td></td>
+</tr>
+<tr>
+<td>SAL</td>
+<td>基本工资</td>
+<td>NUMBER</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>COMM</td>
+<td>佣金</td>
+<td>NUMBER</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Linux_中的安装（正式）">Linux 中的安装（正式）<a class="headerlink" href="#Linux_中的安装（正式）"></a></h2>
+<h3 id="软硬件检查">软硬件检查<a class="headerlink" href="#软硬件检查"></a></h3>
+<ol>
+<li>查看操作系统版本；</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/openEuler-release</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openEuler release 22.03 LTS</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>查看内存；</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">               total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:            3380         244        2641          17         494        2768</span><br><span class="line">Swap:           4023           0        4023</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>查看共享内存；</li>
+</ol>
+<h2 id="参考-3">参考<a class="headerlink" href="#参考-3"></a></h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NJ411M7fE?p=80">【李兴华带你玩编程】Oracle 数据库小白教程（bilibili）</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Oracle 数据库从入门到精通（一）</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://www.imql.life/2020/02/29/Oracle_Database_Learning_1/">https://www.imql.life/2020/02/29/Oracle_Database_Learning_1/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>ql</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2020-02-29</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-08-12</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/VMware-Workstation/">VMware Workstation</a><a class="post-meta__tags" href="/tags/Windows/">Windows</a><a class="post-meta__tags" href="/tags/openEuler/">openEuler</a><a class="post-meta__tags" href="/tags/Oracle-Database/">Oracle Database</a></div><div class="post_share"><div class="social-share" data-image="https://img.imql.life/Oracle.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://img.imql.life/WeChat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/WeChat.png" alt="WeChat"/></a><div class="post-qr-code-desc">WeChat</div></li><li class="reward-item"><a href="https://img.imql.life/Alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Alipay.png" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/02/13/C_Learning_1/" title="C 从入门到精通（一）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C 从入门到精通（一）</div></div></a></div><div class="next-post pull-right"><a href="/2020/09/26/My_homepage_with_Butterfly/" title="我的主页"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/wallpapers/OHR.LavenderBlooms_ZH-CN5541892943_1920x1080.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">我的主页</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/02/06/Java_Learning_1/" title="Java 从入门到实践（一）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Java.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-06</div><div class="title">Java 从入门到实践（一）</div></div></a></div><div><a href="/2020/02/03/Linux_Learning_1/" title="Linux 从入门到实践（一）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Linux.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-03</div><div class="title">Linux 从入门到实践（一）</div></div></a></div><div><a href="/2021/08/29/The_Practice_of_Windows_10_Encapsulation/" title="Windows 10 封装实践"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Windows_10.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-29</div><div class="title">Windows 10 封装实践</div></div></a></div><div><a href="/2020/02/13/C_Learning_1/" title="C 从入门到精通（一）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-13</div><div class="title">C 从入门到精通（一）</div></div></a></div><div><a href="/2020/01/27/Python-Learning(1)/" title="Python 从入门到实践（一）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Python.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-27</div><div class="title">Python 从入门到实践（一）</div></div></a></div><div><a href="/2020/02/10/Python-Learning(2)/" title="Python 从入门到实践（二）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Python.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-10</div><div class="title">Python 从入门到实践（二）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ql</div><div class="author-info__description">一尘不染不是不再有尘埃，而是尘埃让它飞扬，我自做我的阳光。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ql-isaac"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://blog.imql.life/" target="_blank" title="blog"><i class="iconfont icon-boke"></i></a><a class="social-icon" href="/" target="_blank" title="www"><i class="iconfont icon-hudie"></i></a><a class="social-icon" href="https://nav.imql.life/" target="_blank" title="nav"><i class="iconfont icon-daohang"></i></a><a class="social-icon" href="https://space.imql.life/" target="_blank" title="space"><i class="iconfont icon-kongjian"></i></a><a class="social-icon" href="mailto:834471527@qq.com" target="_blank" title="mail"><i class="iconfont icon-youxiang"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">每一秒，都值得被留念！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows_%E4%B8%AD%E7%9A%84%E5%AE%89%E8%A3%85%EF%BC%88%E8%AF%95%E9%AA%8C%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">Windows 中的安装（试验）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL_PLUS_%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">SQL PLUS 的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BB%E5%BD%95_SCOTT_%E7%94%A8%E6%88%B7"><span class="toc-number">3.1.</span> <span class="toc-text">登录 SCOTT 用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.2.</span> <span class="toc-text">第一次查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7"><span class="toc-number">3.3.</span> <span class="toc-text">切换用户</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL"><span class="toc-number">4.</span> <span class="toc-text">SQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SCOTT_%E7%9A%84%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">SCOTT 的数据表分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E9%97%A8%E4%BF%A1%E6%81%AF%E8%A1%A8%EF%BC%88DEPT"><span class="toc-number">5.1.</span> <span class="toc-text">部门信息表（DEPT)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%87%E5%91%98%E4%BF%A1%E6%81%AF%E8%A1%A8%EF%BC%88EMP%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">雇员信息表（EMP）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E8%B5%84%E7%AD%89%E7%BA%A7%E8%A1%A8%EF%BC%88SALGRADE%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">工资等级表（SALGRADE）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E8%B5%84%E8%A1%A8%EF%BC%88BONUS"><span class="toc-number">5.4.</span> <span class="toc-text">工资表（BONUS)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux_%E4%B8%AD%E7%9A%84%E5%AE%89%E8%A3%85%EF%BC%88%E6%AD%A3%E5%BC%8F%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">Linux 中的安装（正式）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E7%A1%AC%E4%BB%B6%E6%A3%80%E6%9F%A5"><span class="toc-number">6.1.</span> <span class="toc-text">软硬件检查</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83-3"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/08/12/Writing_on_The_Cloud_With_YuQue/" title="语雀云端写作"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Working-rafiki.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="语雀云端写作"/></a><div class="content"><a class="title" href="/2023/08/12/Writing_on_The_Cloud_With_YuQue/" title="语雀云端写作">语雀云端写作</a><time datetime="2023-08-12T03:11:51.000Z" title="发表于 2023-08-12 11:11:51">2023-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/16/Play_with_My_Blog/" title="玩转我的博客"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Blogging-bro.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="玩转我的博客"/></a><div class="content"><a class="title" href="/2022/10/16/Play_with_My_Blog/" title="玩转我的博客">玩转我的博客</a><time datetime="2022-10-16T02:00:00.000Z" title="发表于 2022-10-16 10:00:00">2022-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/29/Basic_Knowledge_of_Securities_Investment_Funds/" title="证券投资基金基础知识"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/fund.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="证券投资基金基础知识"/></a><div class="content"><a class="title" href="/2022/05/29/Basic_Knowledge_of_Securities_Investment_Funds/" title="证券投资基金基础知识">证券投资基金基础知识</a><time datetime="2022-05-29T11:07:07.000Z" title="发表于 2022-05-29 19:07:07">2022-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/28/Fund_Laws_and_Regulations_Professional_Ethics_and_Business_Norms/" title="基金法律法规、职业道德与业务规范"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/fund.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基金法律法规、职业道德与业务规范"/></a><div class="content"><a class="title" href="/2022/05/28/Fund_Laws_and_Regulations_Professional_Ethics_and_Business_Norms/" title="基金法律法规、职业道德与业务规范">基金法律法规、职业道德与业务规范</a><time datetime="2022-05-28T13:15:30.000Z" title="发表于 2022-05-28 21:15:30">2022-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/30/Dual_Booting_Windows_11_and_Arch_Linux/" title="Windows 11 和 Arch Linux 双系统"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Dual_Booting_Windows_11_and_Arch_Linux.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows 11 和 Arch Linux 双系统"/></a><div class="content"><a class="title" href="/2022/04/30/Dual_Booting_Windows_11_and_Arch_Linux/" title="Windows 11 和 Arch Linux 双系统">Windows 11 和 Arch Linux 双系统</a><time datetime="2022-04-30T13:51:00.000Z" title="发表于 2022-04-30 21:51:00">2022-04-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By ql</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><div class="icp"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn"><i class="fa fa-registered" aria-hidden="true"></i> <span>京ICP备20031573号-2</span></a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/pluginsSrc/instant.page/instantpage.js" type="module"></script><script src="/pluginsSrc/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.imql.life/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.imql.life/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('/pluginsSrc/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.imql.life/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('/pluginsSrc/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script src="/js/mourning.js"></script><script defer src="/js/wow.min.js"></script><script defer data-pjax src="/js/wow_init.js"></script><script defer src="/js/jquery.min.js"></script><script defer src="/js/issues.min.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/006213f1.js","daovoice")
+</script><script>var isChatBtn = false
+daovoice('init', {
+  app_id: '006213f1',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><script src="/pluginsSrc/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

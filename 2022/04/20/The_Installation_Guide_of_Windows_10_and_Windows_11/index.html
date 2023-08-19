@@ -1,0 +1,565 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Windows 10&amp;11 安装指南 | IMQL.LIFE</title><meta name="author" content="ql"><meta name="copyright" content="ql"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="还不会安装 Windows？快点进来！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows 10&amp;11 安装指南">
+<meta property="og:url" content="https://www.imql.life/2022/04/20/The_Installation_Guide_of_Windows_10_and_Windows_11/index.html">
+<meta property="og:site_name" content="IMQL.LIFE">
+<meta property="og:description" content="还不会安装 Windows？快点进来！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.imql.life/The_Installation_Guide_of_Windows_10_and_Windows_11.png">
+<meta property="article:published_time" content="2022-04-20T11:42:00.000Z">
+<meta property="article:modified_time" content="2022-04-20T11:42:00.000Z">
+<meta property="article:author" content="ql">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.imql.life/The_Installation_Guide_of_Windows_10_and_Windows_11.png"><link rel="shortcut icon" href="https://img.imql.life/www.svg"><link rel="canonical" href="https://www.imql.life/2022/04/20/The_Installation_Guide_of_Windows_10_and_Windows_11/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Windows 10&11 安装指南',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-20 19:42:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="/css/notoserifsc.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 阅读</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="IMQL.LIFE"><span class="site-name">IMQL.LIFE</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 阅读</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Windows 10&amp;11 安装指南<a class="post-edit-link" href="https://github.dev/ql-isaac/www#_posts/Windows 10&amp;11 安装指南.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-20T11:42:00.000Z" title="发表于 2022-04-20 19:42:00">2022-04-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-20T11:42:00.000Z" title="更新于 2022-04-20 19:42:00">2022-04-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/PC/">PC</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="Windows 10&amp;11 安装指南"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/04/20/The_Installation_Guide_of_Windows_10_and_Windows_11/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div><article class="post-content" id="article-container"><p>还不会安装 Windows？快点进来！</p>
+<span id="more"></span>
+<h2 id="下载系统镜像-2">下载系统镜像<a class="headerlink" href="#下载系统镜像-2"></a></h2>
+<p>两个下载渠道：<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download">微软官网</a>和 <a target="_blank" rel="noopener" href="https://next.itellyou.cn">I Tell You（新版）</a>，推荐 I Tell You （新版），这是一个提供原版软件下载链接的网站，下载工具的话就推荐<a target="_blank" rel="noopener" href="https://www.xunlei.com/index.html">迅雷</a>。我选择的 Windows 10 和 Window 11 镜像分别为：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/4f492a33cd4965a5d79ef0955d09e1a3.png" alt="Windows_10.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/4afb01eb459bc934a904d00ce5f8b196.png" alt="Windows_11.png">
+直接点击复制右边的下载链接（建议 BT），如果此时你的迅雷正在运行中的话，此时会自动解析种子并提示下载，如下图，速度还是很快的。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/1e3e0006af3e1163e3efb51da8b152a7.png" alt="速度很快.png">
+下载完成后勾选一下显示校验信息：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/0affe41db723d3d076c2a29fbcfee04e.png" alt="Windows_10校验码.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/d274140340fb886a6daa7db833633fe5.png" alt="Windows_11校验码.png">
+使用软件帮忙生成系统镜像的校验码（MD5、SHA1 和 SHA256 任选一个类型），我这里就直接使用 Windows 自带的命令来生成 SHA256 校验码：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certutil.exe <span class="literal">-hashfile</span> .\zh<span class="literal">-cn_windows_10_business_editions_version_21h2_updated_april_2022_x64_dvd_b0024895</span>.iso SHA256</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SHA256 hash of .\zh-cn_windows_10_business_editions_version_21h2_updated_april_2022_x64_dvd_b0024895.iso:</span><br><span class="line">c0dd1ec3bfd04bcc1b69bfaa988e418caf594287c2ca52d291cb63f01df273ff</span><br><span class="line">CertUtil: -hashfile command completed successfully.</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certutil.exe <span class="literal">-hashfile</span> .\zh<span class="literal">-cn_windows_11_business_editions_updated_april_2022_x64_dvd_dec0b963</span>.iso SHA256</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SHA256 hash of .\zh-cn_windows_11_business_editions_updated_april_2022_x64_dvd_dec0b963.iso:</span><br><span class="line">828ce37ed9c1c07002b865f00580a6a44b759ebfcbb83afb484da88fd7c6ef9d</span><br><span class="line">CertUtil: -hashfile command completed successfully.</span><br></pre></td></tr></table></figure>
+<div class="note info flat"><p>注意系统镜像路径，我这里是在迅雷下载文件夹下进入 Windows Powershell 执行的。</p>
+</div>
+<p>将生成的校验码和图中的进行比对，完全一致则表明系统镜像未损坏。</p>
+<h2 id="方法一：直接安装">方法一：直接安装<a class="headerlink" href="#方法一：直接安装"></a></h2>
+<div class="note success flat"><p>适用情况：电脑比较卡；希望从 Windows 7、Windows 8 或 Windows 8.1 升级到 Windows 10/11。</p>
+</div>
+<p>Windows 11 安装要求较为严苛，如下图，请在安装前确认机器满足要求。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/cc2f22885ce9760812246795263cb29f.png" alt="Windows_11安装要求.png"></p>
+<div class="note info flat"><p>直接安装 Windows 10/11 步骤一致，下面以 Windows 10 为例说明。</p>
+</div>
+<p>首先确保下载的镜像不在 C 盘，如果原来的操作系统是 Windows 7 之后的系统，直接双击打开镜像文件。
+如果原来的操作系统为 Windwos 7，是不能直接双击打开镜像文件的，需要使用解压缩工具将镜像文件解压出来，例如使用 7z。
+双击运行 setup.exe。
+首先是提示你是否要对现在的镜像文件进行更新，建议这里选择更改 Windows 安装程序下载更新的方式：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/2691a7924eccaf0ca638c446e9ed872a.png" alt="更改安装程序下载更新的方式.png">
+选择不是现在，下一步（要是现在更新的话就需要等较长时间）：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/2228cacfe2a310102146648fe3f92572.png" alt="不是现在.png">
+检查准备中：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/e330eb0672b52e9248b2929017eb816c.png" alt="检查准备中.png">
+选择版本，我这里选择专业版：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/9b47b8b9da3a3f508d2a6caf6d869ddf.png" alt="Windows_10专业版.png">
+接受条款：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/a2f561690cbabffa75b1d31fa6fba2e2.png" alt="接受条款.png">
+最后的准备：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/16191682699f2492257dba03b352326c.png" alt="最后的准备.png">
+这里就默认保留个人文件和应用，也就是仅仅操作系统会被改变，C 盘中的个人文件和应用会被保留，可以自行更改要保留的内容。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/964e915ff11712a727062337655567bd.png" alt="保留个人文件和应用.png"></p>
+<div class="note warning flat"><p>升级跨度比较大的话这里只能保留 C 盘中的个人文件。</p>
+</div>
+<p>开始安装，等待即可。</p>
+<h2 id="方法二：从_U_盘启动安装">方法二：从 U 盘启动安装<a class="headerlink" href="#方法二：从_U_盘启动安装"></a></h2>
+<div class="note success flat"><p>适用情况：刚组装了一台台式机，还没有操作系统；电脑进不去了，C 盘没什么文件，可以直接格式化。</p>
+</div>
+<p>空 U 盘插入到一台正常使用的电脑上，使用 <a target="_blank" rel="noopener" href="https://rufus.ie/">Rufus</a> 制作启动盘：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/6aea48e9b453b49b525b8d4bb93f7849.png" alt="制作.png">
+在制作 Windows 11 安装 U 盘时，注意到镜像选项处有两个特别的选项，如下图，简单理解就是一个会去检查是否支持 TPM 2.0，一个不会。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/3385906ad02d0aaa095dc1287a45e7bc.png" alt="需要TPM2.0.png">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/fb3e5abfa0edacb8e817f63764a8a619.png" alt="不需要TPM2.0.png">
+制作完成后就可以将安装盘插到要安装的机器上，启动电脑，同时不停按 F2 进入 BIOS，确认引导模式为 UEFI。
+F10 保存退出 BIOS，同时不停按 F12 进入启动项选择界面。键盘上下键选择带“EFI”“USB”字样的，一般是第二个，回车。
+下一步：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/cbd03453b8976de4629a99c0405333cc.png" alt="下一步.png">
+现在安装：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/66ad6d7f443df4939e18449720fc6b86.png" alt="现在安装.png">
+选择要安装的 Windows 10/11，我这里选择专业版：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/04ecf28931a9694cf7d7f2fc319077ef.png" alt="选择要安装的Windows_10.png">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/44cf871b1470015c8d1700bb0cb44a6c.png" alt="选择要安装的Windows_11.png">
+接受：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/24e9a7e38770bc91ae01c5115cf03d2c.png" alt="接受.png">
+自定义安装：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/149abcb6b5d30fac48420c705810922d.png" alt="自定义安装.png">
+上图中如果选择升级安装，会有下面的提示。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/0fdafbcba9ada3b4dfd51fa6c905f5bc.png" alt="升级选项不可用.png">
+如果这是一台新机器，还没有安装操作系统，那么选择未分配空间的驱动器，选择新建，设定 C 盘大小，应用，确定：</p>
+<div class="note info flat"><p>C 盘大小建议设定为 50-100GB。</p>
+</div>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/baf8e6365fdf4b06d6c782c41b79c0c3.png" alt="驱动器0.png">
+接着依次划分剩余的未分配空间给 D 盘、E 盘等盘。
+如果这是一台旧机器，C 盘上安装过操作系统，但是 C 盘没什么文件，可以直接格式化，那么我们依次删除前三个驱动器分区：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/8505f97a0440ce80d8db19c80d169f7e.png" alt="前三个驱动器分区.png">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/fe0e3457a04d4c7aa6749e2cb6f0d2ec.png" alt="删除分区1.png">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/835cad69f583a35595825561f8c716c0.png" alt="删除分区2.png">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/a5b9884fbcf6202d8a6448a090e657ca.png" alt="删除分区3.png">
+这里有可能只有两个驱动器分区需要删除：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/6c75cf646f2a5d5e35a8629d3f501db9.png" alt="前两个驱动器分区.png">
+接下来就和上述机器还没有安装操作系统的情况一样，选择未分配空间的驱动器，新建 C 盘、D 盘和 E 盘等盘。
+选择新建的 C 盘（第一个类型为主分区的分区），下一步：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/e02e1698e397eca429a7b58fa08706ed.png" alt="下一步.png">
+安装中，等待即可：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/9b89164e9a836174b5ed2ecba60ed38c.png" alt="安装中.png"></p>
+<h2 id="方法三：在_PE_中安装">方法三：在 PE 中安装<a class="headerlink" href="#方法三：在_PE_中安装"></a></h2>
+<div class="note info flat"><p>PE，即预安装环境，是带有有限服务的最小 Windows，在 PE 中安装 Windows 是最好的 Windows 安装办法。</p>
+</div>
+<h3 id="制作_PE">制作 PE<a class="headerlink" href="#制作_PE"></a></h3>
+<p>首先需要一个 U 盘，最好容量大一下，这样可以放下多个镜像，许多其他软件，满足各种安装需要。制作 PE 的软件比较多，强烈推荐<a target="_blank" rel="noopener" href="https://www.wepe.com.cn/">微 PE</a> 和<a target="_blank" rel="noopener" href="https://www.upe.net/">优启通</a>，我这里以优启通为例。
+运行优启通，选择磁盘，全新制作：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/59c81bca1d8655f335a86a6aa9672b78.png" alt="优启通.png">
+制作完成后就可以将 PE 盘插到要安装的机器上，启动电脑，同时不停按 F2 进入 BIOS，确认引导模式为 UEFI。
+F10 保存退出 BIOS，同时不停按 F12 进入启动项选择界面。键盘上下键选择带“EFI”“USB”字样的，一般是第二个，回车。</p>
+<h3 id="备份_C_盘文件（可选）">备份 C 盘文件（可选）<a class="headerlink" href="#备份_C_盘文件（可选）"></a></h3>
+<p>看下自己的 C 盘有没有重要文件，一般就是桌面和下载中的文件，考虑转移一下。</p>
+<h3 id="硬盘分区（可选）">硬盘分区（可选）<a class="headerlink" href="#硬盘分区（可选）"></a></h3>
+<p>对于新的机器，或者整个硬盘数据可清除的情况，可通过桌面上的 DG 硬盘分区对硬盘分好区。
+选择好硬盘，选择上方的快速分区，注意分区表类型选择 GUID，分区数目自定义，其他的推荐默认就好，确定：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/029cdb1d2d876cd9bfef31fe3a4d5e43.png" alt="硬盘分区.png"></p>
+<h3 id="安装">安装<a class="headerlink" href="#安装"></a></h3>
+<p>可直接双击镜像文件安装，之后的步骤同从 U 盘启动安装，也可选择桌面上的 EIX 系统安装进行安装。
+左侧选择版本，右侧选择系统盘（注意在 PE 中，系统盘不一定为 C 盘，请以实际系统盘盘符为准），点击一键恢复，确认：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/e758d8f09dd77849f717584cb7501028.png" alt="映像恢复.png">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/a9b33b1f88c7bd6d55f8378fb8422796.png" alt="确认.png">
+恢复中，等待即可：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/68727d4dde125f490731c14479a478f8.png" alt="恢复中.png"></p>
+<h2 id="开箱体验（OOBE）">开箱体验（OOBE）<a class="headerlink" href="#开箱体验（OOBE）"></a></h2>
+<p>OOBE（Out-of-box experience），即开箱体验，它是在安装完 Windows 后要做的第一件事，以下为 Windows 10/11 的演示。</p>
+<h3 id="Windows_10">Windows 10<a class="headerlink" href="#Windows_10"></a></h3>
+<p>区域设置：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/636f11fbfb89df7a200a2b92831bcd31.png" alt="中国-Windows10.png">
+输入法：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/f8a23fb85343e708d90578d6e2c1db03.png" alt="微软拼音-Windows10.png">
+添加第二种键盘布局：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/bd35ce68c412ee4892259d4601fefbbf.png" alt="跳过-Windows10.png">
+连接到网络：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/5c6b490484d59323a0976ecd76fe13f1.png" alt="我没有Internet连接-Windows10.png">
+创建用户：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/ede5bc55603a1f2edd16b88467222dbd.png" alt="创建用户-Windows10.png">
+设置密码：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/80012c16a042425c5f33e73258b878f4.png" alt="设置密码-Windows10.png">
+隐私设置：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/3a4159666f7c865f3f9f292c553d34b7.png" alt="隐私设置-Windows10.png">
+微软小娜：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/ee22686f9625f35d54d9cf4a54aaf1d0.png" alt="微软小娜-Windows10.png">
+即将完毕：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/2d2c4b4a076df19700550c3aa6ed0de9.png" alt="即将完毕-Windows10.png"></p>
+<h3 id="Windows_11">Windows 11<a class="headerlink" href="#Windows_11"></a></h3>
+<p>区域设置：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/879a8b90862a7faff41b039465cf284d.png" alt="中国-Windows11.png">
+输入法：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/48589410744e3f64b74e2ec561aebbc7.png" alt="微软拼音-Windows11.png">
+添加第二种键盘布局：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/f59062d113ced36eb48b81ede44fed9c.png" alt="跳过-Windows11.png">
+连接到网络：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/ecf65979b73b2cc241bcbc2164fc1c91.png" alt="我没有Internet连接-Windows11.png">
+创建用户：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/16c2362c562f02be73d8c2bf7ac06755.png" alt="创建用户-Windows11.png">
+设置密码：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/ce308ded8ccab4749155e9afcec5cdff.png" alt="设置密码-Windows11.png">
+隐私设置：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/87c952585eb17fa9da1a90659b098e5b.png" alt="隐私设置-Windows11.png">
+即将完毕：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/fb2d5aaadd76b64678e7cba22445e38a.png" alt="即将完毕-Windows11.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Windows 10&amp;11 安装指南</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://www.imql.life/2022/04/20/The_Installation_Guide_of_Windows_10_and_Windows_11/">https://www.imql.life/2022/04/20/The_Installation_Guide_of_Windows_10_and_Windows_11/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>ql</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2022-04-20</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-04-20</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Windows/">Windows</a></div><div class="post_share"><div class="social-share" data-image="https://img.imql.life/The_Installation_Guide_of_Windows_10_and_Windows_11.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://img.imql.life/WeChat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/WeChat.png" alt="WeChat"/></a><div class="post-qr-code-desc">WeChat</div></li><li class="reward-item"><a href="https://img.imql.life/Alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Alipay.png" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/19/Windows_PowerShell/" title="Windows PowerShell"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Windows_PowerShell.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Windows PowerShell</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/30/Dual_Booting_Windows_11_and_Arch_Linux/" title="Windows 11 和 Arch Linux 双系统"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Dual_Booting_Windows_11_and_Arch_Linux.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Windows 11 和 Arch Linux 双系统</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/02/06/Java_Learning_1/" title="Java 从入门到实践（一）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Java.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-06</div><div class="title">Java 从入门到实践（一）</div></div></a></div><div><a href="/2020/02/29/Oracle_Database_Learning_1/" title="Oracle 数据库从入门到精通（一）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Oracle.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-29</div><div class="title">Oracle 数据库从入门到精通（一）</div></div></a></div><div><a href="/2020/01/27/Python-Learning(1)/" title="Python 从入门到实践（一）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Python.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-27</div><div class="title">Python 从入门到实践（一）</div></div></a></div><div><a href="/2020/02/10/Python-Learning(2)/" title="Python 从入门到实践（二）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Python.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-10</div><div class="title">Python 从入门到实践（二）</div></div></a></div><div><a href="/2021/08/29/The_Practice_of_Windows_10_Encapsulation/" title="Windows 10 封装实践"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Windows_10.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-29</div><div class="title">Windows 10 封装实践</div></div></a></div><div><a href="/2022/04/30/Dual_Booting_Windows_11_and_Arch_Linux/" title="Windows 11 和 Arch Linux 双系统"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Dual_Booting_Windows_11_and_Arch_Linux.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-30</div><div class="title">Windows 11 和 Arch Linux 双系统</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ql</div><div class="author-info__description">一尘不染不是不再有尘埃，而是尘埃让它飞扬，我自做我的阳光。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ql-isaac"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://blog.imql.life/" target="_blank" title="blog"><i class="iconfont icon-boke"></i></a><a class="social-icon" href="/" target="_blank" title="www"><i class="iconfont icon-hudie"></i></a><a class="social-icon" href="https://nav.imql.life/" target="_blank" title="nav"><i class="iconfont icon-daohang"></i></a><a class="social-icon" href="https://space.imql.life/" target="_blank" title="space"><i class="iconfont icon-kongjian"></i></a><a class="social-icon" href="mailto:834471527@qq.com" target="_blank" title="mail"><i class="iconfont icon-youxiang"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">每一秒，都值得被留念！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F-2"><span class="toc-number">1.</span> <span class="toc-text">下载系统镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">方法一：直接安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E4%BB%8E_U_%E7%9B%98%E5%90%AF%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">方法二：从 U 盘启动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9A%E5%9C%A8_PE_%E4%B8%AD%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">方法三：在 PE 中安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C_PE"><span class="toc-number">4.1.</span> <span class="toc-text">制作 PE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD_C_%E7%9B%98%E6%96%87%E4%BB%B6%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">备份 C 盘文件（可选）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">硬盘分区（可选）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">4.4.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E7%AE%B1%E4%BD%93%E9%AA%8C%EF%BC%88OOBE%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">开箱体验（OOBE）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows_10"><span class="toc-number">5.1.</span> <span class="toc-text">Windows 10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows_11"><span class="toc-number">5.2.</span> <span class="toc-text">Windows 11</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/08/12/Writing_on_The_Cloud_With_YuQue/" title="语雀云端写作"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Working-rafiki.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="语雀云端写作"/></a><div class="content"><a class="title" href="/2023/08/12/Writing_on_The_Cloud_With_YuQue/" title="语雀云端写作">语雀云端写作</a><time datetime="2023-08-12T03:11:51.000Z" title="发表于 2023-08-12 11:11:51">2023-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/16/Play_with_My_Blog/" title="玩转我的博客"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Blogging-bro.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="玩转我的博客"/></a><div class="content"><a class="title" href="/2022/10/16/Play_with_My_Blog/" title="玩转我的博客">玩转我的博客</a><time datetime="2022-10-16T02:00:00.000Z" title="发表于 2022-10-16 10:00:00">2022-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/29/Basic_Knowledge_of_Securities_Investment_Funds/" title="证券投资基金基础知识"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/fund.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="证券投资基金基础知识"/></a><div class="content"><a class="title" href="/2022/05/29/Basic_Knowledge_of_Securities_Investment_Funds/" title="证券投资基金基础知识">证券投资基金基础知识</a><time datetime="2022-05-29T11:07:07.000Z" title="发表于 2022-05-29 19:07:07">2022-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/28/Fund_Laws_and_Regulations_Professional_Ethics_and_Business_Norms/" title="基金法律法规、职业道德与业务规范"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/fund.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基金法律法规、职业道德与业务规范"/></a><div class="content"><a class="title" href="/2022/05/28/Fund_Laws_and_Regulations_Professional_Ethics_and_Business_Norms/" title="基金法律法规、职业道德与业务规范">基金法律法规、职业道德与业务规范</a><time datetime="2022-05-28T13:15:30.000Z" title="发表于 2022-05-28 21:15:30">2022-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/30/Dual_Booting_Windows_11_and_Arch_Linux/" title="Windows 11 和 Arch Linux 双系统"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Dual_Booting_Windows_11_and_Arch_Linux.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows 11 和 Arch Linux 双系统"/></a><div class="content"><a class="title" href="/2022/04/30/Dual_Booting_Windows_11_and_Arch_Linux/" title="Windows 11 和 Arch Linux 双系统">Windows 11 和 Arch Linux 双系统</a><time datetime="2022-04-30T13:51:00.000Z" title="发表于 2022-04-30 21:51:00">2022-04-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By ql</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><div class="icp"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn"><i class="fa fa-registered" aria-hidden="true"></i> <span>京ICP备20031573号-2</span></a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/pluginsSrc/instant.page/instantpage.js" type="module"></script><script src="/pluginsSrc/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.imql.life/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.imql.life/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('/pluginsSrc/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.imql.life/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('/pluginsSrc/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script src="/js/mourning.js"></script><script defer src="/js/wow.min.js"></script><script defer data-pjax src="/js/wow_init.js"></script><script defer src="/js/jquery.min.js"></script><script defer src="/js/issues.min.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/006213f1.js","daovoice")
+</script><script>var isChatBtn = false
+daovoice('init', {
+  app_id: '006213f1',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><script src="/pluginsSrc/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

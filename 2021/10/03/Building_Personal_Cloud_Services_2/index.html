@@ -1,0 +1,551 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>建立个人云服务（二） | IMQL.LIFE</title><meta name="author" content="ql"><meta name="copyright" content="ql"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="工作的机会，接触到 Atlassian 公司旗下的多款软件产品，虽然不是开源的，虽然不是免费的，但是好用啊，无论是对个人还是企业来说。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="建立个人云服务（二）">
+<meta property="og:url" content="https://www.imql.life/2021/10/03/Building_Personal_Cloud_Services_2/index.html">
+<meta property="og:site_name" content="IMQL.LIFE">
+<meta property="og:description" content="工作的机会，接触到 Atlassian 公司旗下的多款软件产品，虽然不是开源的，虽然不是免费的，但是好用啊，无论是对个人还是企业来说。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.imql.life/Building_Personal_Cloud_Services.png">
+<meta property="article:published_time" content="2021-10-03T11:48:18.000Z">
+<meta property="article:modified_time" content="2021-10-06T12:44:00.000Z">
+<meta property="article:author" content="ql">
+<meta property="article:tag" content="Ubuntu">
+<meta property="article:tag" content="JDK">
+<meta property="article:tag" content="Jira Software">
+<meta property="article:tag" content="Confluence">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="MySQL Connector&#x2F;J">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.imql.life/Building_Personal_Cloud_Services.png"><link rel="shortcut icon" href="https://img.imql.life/www.svg"><link rel="canonical" href="https://www.imql.life/2021/10/03/Building_Personal_Cloud_Services_2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '建立个人云服务（二）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-06 20:44:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="/css/notoserifsc.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 阅读</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.imql.life/Building_Personal_Cloud_Services.png')"><nav id="nav"><span id="blog-info"><a href="/" title="IMQL.LIFE"><span class="site-name">IMQL.LIFE</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 阅读</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">建立个人云服务（二）<a class="post-edit-link" href="https://github.dev/ql-isaac/www#_posts/建立个人云服务（二）.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-03T11:48:18.000Z" title="发表于 2021-10-03 19:48:18">2021-10-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-10-06T12:44:00.000Z" title="更新于 2021-10-06 20:44:00">2021-10-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E4%BA%91%E6%9C%8D%E5%8A%A1/">建立个人云服务</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="建立个人云服务（二）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/10/03/Building_Personal_Cloud_Services_2/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>工作的机会，接触到 <a target="_blank" rel="noopener" href="https://www.atlassian.com/">Atlassian 公司</a>旗下的多款软件产品，虽然不是开源的，虽然不是免费的，但是好用啊，无论是对个人还是企业来说。</p>
+<span id="more"></span>
+<h2 id="下载_Jira_Software">下载 Jira Software<a class="headerlink" href="#下载_Jira_Software"></a></h2>
+<p>Jira Software 是 <a target="_blank" rel="noopener" href="https://www.atlassian.com/">Atlassian 公司</a> 出品的问题管理与协同工具，被广泛应用于缺陷跟踪、客户服务、需求收集、流程审批、任务跟踪、项目跟踪和敏捷管理等工作领域。
+Jira Software 有两种部署方式：云平台和自建。云平台方式就是 Atlassian 官方提供全套云服务，你只需要注册账号通过浏览器使用即可，但是这种方式在国内体验并不好，出于个人自学的目的，我选择自建方式。
+在<a target="_blank" rel="noopener" href="https://www.atlassian.com/software/jira/download-archives">官方下载页面</a>，选择下载最新的长期支持版：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/65f8f94574f6fd2f3688aa1e47b7b836.png" alt="长期支持版.png">
+这里选择 TAR.GZ 格式的，如下图，这种格式需要进行手动安装，下载完成后使用 SFTP 上传到无忧实例家目录下的 Atlassian 下。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/7792f9b2c82db4e01567949a48983505.png" alt="tar.gz.png">
+这里有安装手册，如下图，官方的文档写得非常好，只是需要一点英文基础。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/0c27dabc33ed2177879d05053b27f6b6.png" alt="安装手册.png"></p>
+<h2 id="下载_Confluence">下载 Confluence<a class="headerlink" href="#下载_Confluence"></a></h2>
+<p>Confluence 是 <a target="_blank" rel="noopener" href="https://www.atlassian.com/">Atlassian 公司</a> 出品的知识管理与协同软件，可以用于构建企业 wiki。
+Confluence 同样有两种部署方式：云平台和自建，我们还是选择自建。
+在<a target="_blank" rel="noopener" href="https://www.atlassian.com/software/confluence/download-archives">官方下载页面</a>，也是选择下载 TAR.GZ 格式的最新长期支持版，然后上传到无忧实例家目录下的 Atlassian 下。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/7e74763a9a501ba7d4a4a1c4786bdcdf.png" alt="confluence.png"></p>
+<h2 id="下载安装_Jdk8">下载安装 Jdk8<a class="headerlink" href="#下载安装_Jdk8"></a></h2>
+<p>前往<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/#java8">官方下载地址</a>，也是下载 TAR.GZ 格式的，如下图，这里需要登录才能下载，没有账号就注册一下。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/f4a232930b3cae52e1b0c8f8a2833a13.png" alt="jdk8.png">
+下载完成后，使用 root 用户登录无忧实例，如果确认密码是正确的还是登不上，那可能是 SSH 没开启 root 远程登录，百度一下即可。登录上之后创建目录，如下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /usr/lib/jdk</span><br></pre></td></tr></table></figure>
+<p>上传刚刚下好的 Jdk 到以上创建目录下，再解压到此目录下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-8u301-linux-x64.tar.gz -C /usr/lib/jdk</span><br></pre></td></tr></table></figure>
+<p>再换成 ubuntu 用户登录，这是平常使用的用户，编辑 .bashrc。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>在文件的末尾，空一格，追加下面内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#Set Oracle Jdk environment</span><br><span class="line">export JAVA_HOME=/usr/lib/jdk/jdk1.8.0_301</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib</span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>使环境变量马上生效:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>执行如下命令，输出版本信息，表明 Jdk 安装成功。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/d8531eece3cf36ada075b344f91a6f24.png" alt="安装成功.png"></p>
+<h2 id="下载安装配置_MySQL5_7">下载安装配置 MySQL5.7<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><a class="headerlink" href="#下载安装配置_MySQL5_7"></a></h2>
+<p>分别执行以下命令下载 MySQL APT 并安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.mysql.com/mysql-apt-config_0.8.19-1_all.deb</span><br><span class="line">sudo dpkg -i mysql-apt-config_0.8.19-1_all.deb</span><br></pre></td></tr></table></figure>
+<p>选择第一个回车，之后可以选择版本，也是选择第一个 mysql-5.7，回车，回到了上一级，移动到最底下，即选择 Ok，回车：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/e1108b3336a9b2c9f56e4c009db37b1d.png" alt="回车.png">
+使用以下命令更新 MySQL APT 存储库中的包信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>执行以下命令安装 MySQL，安装过程中会要求输入 root 数据库用户的密码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br></pre></td></tr></table></figure>
+<p>安装完成后，服务是已经启动的，可执行以下命令查看。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysql</span><br></pre></td></tr></table></figure>
+<p>编辑 my.cnf：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
+<p>空一行，追加以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8mb4_bin</span><br><span class="line">default-storage-engine=INNODB</span><br><span class="line">max_allowed_packet=256M</span><br><span class="line">transaction-isolation=READ-COMMITTED</span><br><span class="line">binlog_format=row</span><br><span class="line">log-bin-trust-function-creators = 1</span><br><span class="line">optimizer_switch = derived_merge=off</span><br><span class="line">innodb_default_row_format=DYNAMIC</span><br><span class="line">innodb_large_prefix=ON</span><br><span class="line">innodb_file_format=Barracuda</span><br><span class="line">innodb_log_file_size=2G</span><br></pre></td></tr></table></figure>
+<p>重启 MySQL：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql stop</span><br><span class="line">sudo service mysql start</span><br></pre></td></tr></table></figure>
+<p>以 root（不是操作系统的 root）登入 MySQL，密码就是上面设定的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p>这里可以看到 MySQL 的具体版本：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/5cc8eec7cb7f6a1f9ada3e041418edab.png" alt="具体版本.png">
+分别执行以下 SQL，创建数据库用户 jira 和 confluence，数据库 jiradb 和 confluencedb。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> jira IDENTIFIED <span class="keyword">by</span> <span class="string">&#x27;&lt;jira的密码&gt;&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> confluence IDENTIFIED <span class="keyword">by</span> <span class="string">&#x27;&lt;confluence的密码&gt;&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> DATABASE jiradb <span class="type">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_bin;</span><br><span class="line"><span class="keyword">CREATE</span> DATABASE confluence <span class="type">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_bin;</span><br></pre></td></tr></table></figure>
+<p>分别执行以下 SQL，授予数据库用户 jira 和 confluence 相应权限。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>,<span class="keyword">INSERT</span>,<span class="keyword">UPDATE</span>,<span class="keyword">DELETE</span>,<span class="keyword">CREATE</span>,<span class="keyword">DROP</span>,<span class="keyword">REFERENCES</span>,<span class="keyword">ALTER</span>,INDEX <span class="keyword">on</span> jiradb.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;jira&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;&lt;自己设定的jira的密码&gt;&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> confluencedb.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;confluence&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;&lt;自己设定的confluence的密码&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>最后使权限生效：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>退出 MySQL：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+<h2 id="下载_MySQL_JDBC_Drive">下载 MySQL JDBC Drive<a class="headerlink" href="#下载_MySQL_JDBC_Drive"></a></h2>
+<p>了解到要想使用 confluence，官方推荐的 JDBC driver 是 5.1 版本的<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>，于是前往 <a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/c-j/">MySQL 官方地址下载该版本的 JDBC driver</a>，如下图，注意选择 Platform Independent，即与平台无关。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/133c55674d4f32b2768c1429ecb75dbf.png" alt="Platform-Independent.png">
+下载完成后直接解压到当前文件夹，我们只需要里面的 jar 文件，如下图，先将其上传到无忧实例家目录下的 Atlassian 下。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/7a2c81761f087ce0523ea43e895da22d.png" alt="jar.png">
+Jira 也可以使用 5.1 版本的 JDBC driver<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>，那就不用再下了。</p>
+<h2 id="安装_Jira_Software">安装 Jira Software<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup><a class="headerlink" href="#安装_Jira_Software"></a></h2>
+<h3 id="准备">准备<a class="headerlink" href="#准备"></a></h3>
+<ol>
+<li>创建安装目录：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/Atlassian/jirasoftware</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>解压压缩包到安装目录：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzf ~/Atlassian/atlassian-jira-software-8.13.11.tar.gz -C ~/Atlassian/jirasoftware</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>复制下载好的 MySQL JDBC Drive 到相应目录：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> ~/Atlassian/mysql-connector-java-5.1.49.jar ~/Atlassian/jirasoftware/atlassian-jira-software-8.13.11-standalone/lib</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>创建 Jira Software 的家目录，这是应用产生的数据的存放之处：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/Atlassian/jirasoftware/jirasoftware-home</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>创建了家目录，就要告诉 Jira Software 家目录在哪儿，同样是编辑 .bashrc，在文件的末尾空一格，追加下面内容：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JIRA_HOME=~/Atlassian/jirasoftware/jirasoftware-home</span><br></pre></td></tr></table></figure>
+<h3 id="使用_Candy_代理_Jira_Software">使用 Candy 代理 Jira Software<a class="headerlink" href="#使用_Candy_代理_Jira_Software"></a></h3>
+<p>注释掉无代理连接器：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#本行为~/Atlassian/jirasoftware/atlassian-jira-software-8.13.11-standalone/conf/server.xml的第17行（随着Jira Software的不断更新，本行对应在你的server.yml中不一定是第17行，请以实际情况为准）</span><br><span class="line">&lt;Server port=&quot;8005&quot; shutdown=&quot;SHUTDOWN&quot;&gt;</span><br><span class="line">    &lt;Listener className=&quot;org.apache.catalina.startup.VersionLoggerListener&quot;/&gt;</span><br><span class="line">    &lt;Listener className=&quot;org.apache.catalina.core.AprLifecycleListener&quot; SSLEngine=&quot;on&quot;/&gt;</span><br><span class="line">    &lt;Listener className=&quot;org.apache.catalina.core.JreMemoryLeakPreventionListener&quot;/&gt;</span><br><span class="line">    &lt;Listener className=&quot;org.apache.catalina.mbeans.GlobalResourcesLifecycleListener&quot;/&gt;</span><br><span class="line">    &lt;Listener className=&quot;org.apache.catalina.core.ThreadLocalLeakPreventionListener&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Service name=&quot;Catalina&quot;&gt;</span><br><span class="line">        &lt;!--</span><br><span class="line">         <span class="comment">==============================================================================================================</span></span><br><span class="line">         DEFAULT - Direct connector with no proxy for unproxied access to Jira.</span><br><span class="line"></span><br><span class="line">         If using a http/https proxy, comment out this connector.</span><br><span class="line">         <span class="comment">==============================================================================================================</span></span><br><span class="line">        --&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- Relaxing chars because of JRASERVER-67974 --&gt;</span><br><span class="line"><span class="deletion">-        &lt;Connector port=&quot;8080&quot; relaxedPathChars=&quot;[]|&quot; relaxedQueryChars=&quot;[]|&#123;&#125;^\`&quot;&lt;&gt;&quot;</span></span><br><span class="line"><span class="deletion">-                   maxThreads=&quot;150&quot; minSpareThreads=&quot;25&quot; connectionTimeout=&quot;20000&quot; enableLookups=&quot;false&quot;</span></span><br><span class="line"><span class="deletion">-                   maxHttpHeaderSize=&quot;8192&quot; protocol=&quot;HTTP/1.1&quot; useBodyEncodingForURI=&quot;true&quot; redirectPort=&quot;8443&quot;</span></span><br><span class="line"><span class="deletion">-                   acceptCount=&quot;100&quot; disableUploadTimeout=&quot;true&quot; bindOnInit=&quot;false&quot;/&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#本行为~/Atlassian/jirasoftware/atlassian-jira-software-8.13.11-standalone/conf/server.xml的第17行（随着Jira Software的不断更新，本行对应在你的server.yml中不一定是第17行，请以实际情况为准）</span><br><span class="line">&lt;Server port=&quot;8005&quot; shutdown=&quot;SHUTDOWN&quot;&gt;</span><br><span class="line">    &lt;Listener className=&quot;org.apache.catalina.startup.VersionLoggerListener&quot;/&gt;</span><br><span class="line">    &lt;Listener className=&quot;org.apache.catalina.core.AprLifecycleListener&quot; SSLEngine=&quot;on&quot;/&gt;</span><br><span class="line">    &lt;Listener className=&quot;org.apache.catalina.core.JreMemoryLeakPreventionListener&quot;/&gt;</span><br><span class="line">    &lt;Listener className=&quot;org.apache.catalina.mbeans.GlobalResourcesLifecycleListener&quot;/&gt;</span><br><span class="line">    &lt;Listener className=&quot;org.apache.catalina.core.ThreadLocalLeakPreventionListener&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Service name=&quot;Catalina&quot;&gt;</span><br><span class="line">        &lt;!--</span><br><span class="line">         <span class="comment">==============================================================================================================</span></span><br><span class="line">         DEFAULT - Direct connector with no proxy for unproxied access to Jira.</span><br><span class="line"></span><br><span class="line">         If using a http/https proxy, comment out this connector.</span><br><span class="line">         <span class="comment">==============================================================================================================</span></span><br><span class="line">        --&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- Relaxing chars because of JRASERVER-67974 --&gt;</span><br><span class="line"><span class="addition">+        &lt;!--</span></span><br><span class="line"><span class="addition">+        &lt;Connector port=&quot;8080&quot; relaxedPathChars=&quot;[]|&quot; relaxedQueryChars=&quot;[]|&#123;&#125;^\`&quot;&lt;&gt;&quot;</span></span><br><span class="line"><span class="addition">+                   maxThreads=&quot;150&quot; minSpareThreads=&quot;25&quot; connectionTimeout=&quot;20000&quot; enableLookups=&quot;false&quot;</span></span><br><span class="line"><span class="addition">+                   maxHttpHeaderSize=&quot;8192&quot; protocol=&quot;HTTP/1.1&quot; useBodyEncodingForURI=&quot;true&quot; redirectPort=&quot;8443&quot;</span></span><br><span class="line"><span class="addition">+                   acceptCount=&quot;100&quot; disableUploadTimeout=&quot;true&quot; bindOnInit=&quot;false&quot;/&gt;</span></span><br><span class="line"><span class="addition">+        --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>要使用 Candy 代理，需要将 HTTPS 代理连接器放开，同时设置端口为 8081（8080 已经用于本系列第一篇中的 code-server 服务了），代理域名设为 <a target="_blank" rel="noopener" href="http://proj.ql-isaac.cn">proj.ql-isaac.cn</a>：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#本行为~/Atlassian/jirasoftware/atlassian-jira-software-8.13.11-standalone/conf/server.xml的第62行（随着Jira Software的不断更新，本行对应在你的server.yml中不一定是第62：行，请以实际情况为准）</span><br><span class="line">        &lt;!--</span><br><span class="line">         <span class="comment">==============================================================================================================</span></span><br><span class="line">         HTTPS - Proxying Jira via Apache or Nginx over HTTPS</span><br><span class="line"></span><br><span class="line">         If you&#x27;re proxying traffic to Jira over HTTPS, uncomment the below connector and comment out the others.</span><br><span class="line">         Ensure the proxyName and proxyPort are updated with the appropriate information if necessary as per the docs.</span><br><span class="line"></span><br><span class="line">         See the following for more information:</span><br><span class="line"></span><br><span class="line">            Apache - https://confluence.atlassian.com/x/PTT3MQ</span><br><span class="line">            nginx  - https://confluence.atlassian.com/x/DAFmGQ</span><br><span class="line">         <span class="comment">==============================================================================================================</span></span><br><span class="line">        --&gt;</span><br><span class="line"></span><br><span class="line"><span class="deletion">-        &lt;!--</span></span><br><span class="line"><span class="deletion">-        &lt;Connector port=&quot;8080&quot; relaxedPathChars=&quot;[]|&quot; relaxedQueryChars=&quot;[]|&#123;&#125;^\`&quot;&lt;&gt;&quot;</span></span><br><span class="line"><span class="deletion">-                   maxThreads=&quot;150&quot; minSpareThreads=&quot;25&quot; connectionTimeout=&quot;20000&quot; enableLookups=&quot;false&quot;</span></span><br><span class="line"><span class="deletion">-                   maxHttpHeaderSize=&quot;8192&quot; protocol=&quot;HTTP/1.1&quot; useBodyEncodingForURI=&quot;true&quot; redirectPort=&quot;8443&quot;</span></span><br><span class="line"><span class="deletion">-                   acceptCount=&quot;100&quot; disableUploadTimeout=&quot;true&quot; bindOnInit=&quot;false&quot; secure=&quot;true&quot; scheme=&quot;https&quot;</span></span><br><span class="line"><span class="deletion">-                   proxyName=&quot;&lt;subdomain&gt;.&lt;domain&gt;.com&quot; proxyPort=&quot;443&quot;/&gt;</span></span><br><span class="line"><span class="deletion">-        --&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#本行为~/Atlassian/jirasoftware/atlassian-jira-software-8.13.11-standalone/conf/server.xml的第62行（随着Jira Software的不断更新，本行对应在你的server.yml中不一定是第62行，请以实际情况为准）</span><br><span class="line">        &lt;!--</span><br><span class="line">         <span class="comment">==============================================================================================================</span></span><br><span class="line">         HTTPS - Proxying Jira via Apache or Nginx over HTTPS</span><br><span class="line"></span><br><span class="line">         If you&#x27;re proxying traffic to Jira over HTTPS, uncomment the below connector and comment out the others.</span><br><span class="line">         Ensure the proxyName and proxyPort are updated with the appropriate information if necessary as per the docs.</span><br><span class="line"></span><br><span class="line">         See the following for more information:</span><br><span class="line"></span><br><span class="line">            Apache - https://confluence.atlassian.com/x/PTT3MQ</span><br><span class="line">            nginx  - https://confluence.atlassian.com/x/DAFmGQ</span><br><span class="line">         <span class="comment">==============================================================================================================</span></span><br><span class="line">        --&gt;</span><br><span class="line"></span><br><span class="line"><span class="addition">+        &lt;Connector port=&quot;8081&quot; relaxedPathChars=&quot;[]|&quot; relaxedQueryChars=&quot;[]|&#123;&#125;^\`&quot;&lt;&gt;&quot;</span></span><br><span class="line"><span class="addition">+                   maxThreads=&quot;150&quot; minSpareThreads=&quot;25&quot; connectionTimeout=&quot;20000&quot; enableLookups=&quot;false&quot;</span></span><br><span class="line"><span class="addition">+                   maxHttpHeaderSize=&quot;8192&quot; protocol=&quot;HTTP/1.1&quot; useBodyEncodingForURI=&quot;true&quot; redirectPort=&quot;8443&quot;</span></span><br><span class="line"><span class="addition">+                   acceptCount=&quot;100&quot; disableUploadTimeout=&quot;true&quot; bindOnInit=&quot;false&quot; secure=&quot;true&quot; scheme=&quot;https&quot;</span></span><br><span class="line"><span class="addition">+                   proxyName=&quot;proj.ql-isaac.cn&quot; proxyPort=&quot;443&quot;/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>编辑 Caddyfile，空一行，追加以下内容，重启 Caddy 服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proj.ql-isaac.cn &#123;</span><br><span class="line">    reverse_proxy 127.0.0.1:8081</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note info flat"><p>编辑 Caddyfile 和重启 Caddy 服务请见<a target="_blank" rel="noopener" href="https://blog.ql-isaac.cn/2021/09/08/Building_Personal_Cloud_Services(1)/#code-server%5B1%5D%5B2%5D">本系列第一篇</a></p>
+</div>
+<p>启动 Jira：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Atlassian/jirasoftware/atlassian-jira-software-8.13.11-standalone/bin</span><br><span class="line">./start-jira.sh</span><br></pre></td></tr></table></figure>
+<h3 id="设置_Jira_Software">设置 Jira Software<a class="headerlink" href="#设置_Jira_Software"></a></h3>
+<p>现在，可以通过域名公网访问了，还需要完成最后几步，先将语言设置成中文，如下图。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/28607436351f6cce43ffe29dfead1d08.png" alt="language.png">
+选择第二个，下一步：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/0f855596601f710d2aeedbc560e6e36b.png" alt="第二个.png">
+选择“其他数据库”，设置数据库，密码就是上面自己设定的，设置好后可以点击测试连接，如下图，提示成功后下一步。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/da064fd03bb21779e6dd0f6df9b6364e.png" alt="测试连接成功.png">
+心头一震，响应失败了：
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/87276e62216bd8b1bf295476c2594f52.png" alt="无法处理此请求.png">
+马上看了一下资源使用情况，如下图，好家伙，看来这 1h2g 的配置完全不够啊。
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/8d0f8a7fd4ea6587215386e8e189ff14.png" alt="不堪重负.png">
+等了许久，一直都显示的满负荷，去 TencentCloud Lighthouse 的监控页面看了一下，监控数据都接收不到，看来是死机了。
+看了一下轻量无忧计划 2h4g 的费用，告辞，本次搭建失败。后面考虑自建服务器吧，玩玩树莓派？</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a target="_blank" rel="noopener" href="https://confluence.atlassian.com/adminjiraserver0813/connecting-jira-applications-to-mysql-5-7-1027137456.html">Connecting Jira applications to MySQL 5.7</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a target="_blank" rel="noopener" href="https://confluence.atlassian.com/doc/database-jdbc-drivers-171742.html">Database JDBC Drivers</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p><a target="_blank" rel="noopener" href="https://confluence.atlassian.com/adminjiraserver0813/supported-platforms-1027137429.html">Supported platforms</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p><a target="_blank" rel="noopener" href="https://confluence.atlassian.com/adminjiraserver0813/installing-jira-applications-on-linux-from-archive-file-1027137443.html">Installing Jira applications on Linux from Archive File</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>建立个人云服务（二）</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://www.imql.life/2021/10/03/Building_Personal_Cloud_Services_2/">https://www.imql.life/2021/10/03/Building_Personal_Cloud_Services_2/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>ql</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-10-03</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-10-06</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Ubuntu/">Ubuntu</a><a class="post-meta__tags" href="/tags/JDK/">JDK</a><a class="post-meta__tags" href="/tags/Jira-Software/">Jira Software</a><a class="post-meta__tags" href="/tags/Confluence/">Confluence</a><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a><a class="post-meta__tags" href="/tags/MySQL-Connector-J/">MySQL Connector/J</a></div><div class="post_share"><div class="social-share" data-image="https://img.imql.life/Building_Personal_Cloud_Services.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://img.imql.life/WeChat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/WeChat.png" alt="WeChat"/></a><div class="post-qr-code-desc">WeChat</div></li><li class="reward-item"><a href="https://img.imql.life/Alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Alipay.png" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/09/15/My_First_Npm_Package/" title="我的第一个 npm 包？"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/npm.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">我的第一个 npm 包？</div></div></a></div><div class="next-post pull-right"><a href="/2021/10/13/Building_Personal_Cloud_Services_3/" title="建立个人云服务（三）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Building_Personal_Cloud_Services.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">建立个人云服务（三）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/02/13/C_Learning_1/" title="C 从入门到精通（一）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-13</div><div class="title">C 从入门到精通（一）</div></div></a></div><div><a href="/2020/01/24/What_is_Git/" title="什么是 Git？"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Git.gif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-24</div><div class="title">什么是 Git？</div></div></a></div><div><a href="/2021/09/08/Building_Personal_Cloud_Services_1/" title="建立个人云服务（一）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Building_Personal_Cloud_Services.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-08</div><div class="title">建立个人云服务（一）</div></div></a></div><div><a href="/2021/11/11/Building_Personal_Cloud_Services_4/" title="建立个人云服务（四）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Building_Personal_Cloud_Services.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-11</div><div class="title">建立个人云服务（四）</div></div></a></div><div><a href="/2020/02/06/Java_Learning_1/" title="Java 从入门到实践（一）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Java.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-06</div><div class="title">Java 从入门到实践（一）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ql</div><div class="author-info__description">一尘不染不是不再有尘埃，而是尘埃让它飞扬，我自做我的阳光。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ql-isaac"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://blog.imql.life/" target="_blank" title="blog"><i class="iconfont icon-boke"></i></a><a class="social-icon" href="/" target="_blank" title="www"><i class="iconfont icon-hudie"></i></a><a class="social-icon" href="https://nav.imql.life/" target="_blank" title="nav"><i class="iconfont icon-daohang"></i></a><a class="social-icon" href="https://space.imql.life/" target="_blank" title="space"><i class="iconfont icon-kongjian"></i></a><a class="social-icon" href="mailto:834471527@qq.com" target="_blank" title="mail"><i class="iconfont icon-youxiang"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">每一秒，都值得被留念！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD_Jira_Software"><span class="toc-number">1.</span> <span class="toc-text">下载 Jira Software</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD_Confluence"><span class="toc-number">2.</span> <span class="toc-text">下载 Confluence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85_Jdk8"><span class="toc-number">3.</span> <span class="toc-text">下载安装 Jdk8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE_MySQL5_7"><span class="toc-number">4.</span> <span class="toc-text">下载安装配置 MySQL5.7[1]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD_MySQL_JDBC_Drive"><span class="toc-number">5.</span> <span class="toc-text">下载 MySQL JDBC Drive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85_Jira_Software"><span class="toc-number">6.</span> <span class="toc-text">安装 Jira Software[4]</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">6.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8_Candy_%E4%BB%A3%E7%90%86_Jira_Software"><span class="toc-number">6.2.</span> <span class="toc-text">使用 Candy 代理 Jira Software</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE_Jira_Software"><span class="toc-number">6.3.</span> <span class="toc-text">设置 Jira Software</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/08/12/Writing_on_The_Cloud_With_YuQue/" title="语雀云端写作"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Working-rafiki.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="语雀云端写作"/></a><div class="content"><a class="title" href="/2023/08/12/Writing_on_The_Cloud_With_YuQue/" title="语雀云端写作">语雀云端写作</a><time datetime="2023-08-12T03:11:51.000Z" title="发表于 2023-08-12 11:11:51">2023-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/16/Play_with_My_Blog/" title="玩转我的博客"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Blogging-bro.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="玩转我的博客"/></a><div class="content"><a class="title" href="/2022/10/16/Play_with_My_Blog/" title="玩转我的博客">玩转我的博客</a><time datetime="2022-10-16T02:00:00.000Z" title="发表于 2022-10-16 10:00:00">2022-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/29/Basic_Knowledge_of_Securities_Investment_Funds/" title="证券投资基金基础知识"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/fund.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="证券投资基金基础知识"/></a><div class="content"><a class="title" href="/2022/05/29/Basic_Knowledge_of_Securities_Investment_Funds/" title="证券投资基金基础知识">证券投资基金基础知识</a><time datetime="2022-05-29T11:07:07.000Z" title="发表于 2022-05-29 19:07:07">2022-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/28/Fund_Laws_and_Regulations_Professional_Ethics_and_Business_Norms/" title="基金法律法规、职业道德与业务规范"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/fund.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基金法律法规、职业道德与业务规范"/></a><div class="content"><a class="title" href="/2022/05/28/Fund_Laws_and_Regulations_Professional_Ethics_and_Business_Norms/" title="基金法律法规、职业道德与业务规范">基金法律法规、职业道德与业务规范</a><time datetime="2022-05-28T13:15:30.000Z" title="发表于 2022-05-28 21:15:30">2022-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/30/Dual_Booting_Windows_11_and_Arch_Linux/" title="Windows 11 和 Arch Linux 双系统"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/Dual_Booting_Windows_11_and_Arch_Linux.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows 11 和 Arch Linux 双系统"/></a><div class="content"><a class="title" href="/2022/04/30/Dual_Booting_Windows_11_and_Arch_Linux/" title="Windows 11 和 Arch Linux 双系统">Windows 11 和 Arch Linux 双系统</a><time datetime="2022-04-30T13:51:00.000Z" title="发表于 2022-04-30 21:51:00">2022-04-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By ql</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><div class="icp"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn"><i class="fa fa-registered" aria-hidden="true"></i> <span>京ICP备20031573号-2</span></a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/pluginsSrc/instant.page/instantpage.js" type="module"></script><script src="/pluginsSrc/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.imql.life/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.imql.life/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('/pluginsSrc/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.imql.life/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('/pluginsSrc/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script src="/js/mourning.js"></script><script defer src="/js/wow.min.js"></script><script defer data-pjax src="/js/wow_init.js"></script><script defer src="/js/jquery.min.js"></script><script defer src="/js/issues.min.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/006213f1.js","daovoice")
+</script><script>var isChatBtn = false
+daovoice('init', {
+  app_id: '006213f1',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><script src="/pluginsSrc/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
