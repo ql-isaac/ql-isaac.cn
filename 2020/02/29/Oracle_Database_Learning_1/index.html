@@ -273,19 +273,19 @@
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/8e10647a76d84bb23da8848e1b4b2494.png" alt="完成.png"></p>
 <h2 id="SQL_PLUS_的使用">SQL PLUS 的使用<a class="headerlink" href="#SQL_PLUS_的使用"></a></h2>
 <h3 id="登录_SCOTT_用户">登录 SCOTT 用户<a class="headerlink" href="#登录_SCOTT_用户"></a></h3>
-<p>命令行 CMD 里输入 sqlplus，输入 scott，再输入密码 tiger（不会回显），即可登录 SCOTT 用户。
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/4d54a3a8888faa6127189fe4ae76b8d9.gif" alt="登录scott用户.gif"></p>
+<p>命令行 CMD 里输入 sqlplus，输入 scott，再输入密码 tiger（不会回显），即可登录 SCOTT 用户。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/4d54a3a8888faa6127189fe4ae76b8d9.gif" alt="登录scott用户.gif"></p>
 <h3 id="第一次查询">第一次查询<a class="headerlink" href="#第一次查询"></a></h3>
 <p>数据库最重要的组成对象是表，登录上 SCOTT 用户后，首先通过以下命令查询一下该用户有哪些表吧。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> TAB;</span><br></pre></td></tr></table></figure>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/36d5ea105c5d84ba1c09fc4fb162902a.gif" alt="第一次查询.gif">
-呃，查询结果显示得比较乱，有一个命令可以解决这个问题，如下，设置每行显示的数据长度，执行完这个命令后再查询一下 SCOTT 用户有哪些表看看。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/36d5ea105c5d84ba1c09fc4fb162902a.gif" alt="第一次查询.gif"></p>
+<p>呃，查询结果显示得比较乱，有一个命令可以解决这个问题，如下，设置每行显示的数据长度，执行完这个命令后再查询一下 SCOTT 用户有哪些表看看。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET LINESIZE 100</span><br></pre></td></tr></table></figure>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/8b704d98d4a5fe2aad78efc79cc3f91b.gif" alt="显示问题.gif">
-呃，如果觉得 TNAME 列的数据所占的长度太长了，有一个命令可以解决这个问题，如下，设置 TNAME 列的数据所占的长度，执行完这个命令后再查询一下 SCOTT 用户有哪些表看看。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/8b704d98d4a5fe2aad78efc79cc3f91b.gif" alt="显示问题.gif"></p>
+<p>呃，如果觉得 TNAME 列的数据所占的长度太长了，有一个命令可以解决这个问题，如下，设置 TNAME 列的数据所占的长度，执行完这个命令后再查询一下 SCOTT 用户有哪些表看看。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COL TNAME FOR A20</span><br></pre></td></tr></table></figure>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/44c29b688c3275865e98d0a52d7845df.gif" alt="太长了.gif">
-终于，能很舒服地查看到 SCOTT 用户下有四个表：BONUS、DEPT、EMP 和 SALGRADE。那么，再查询一下 DEPT 表吧。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/44c29b688c3275865e98d0a52d7845df.gif" alt="太长了.gif"></p>
+<p>终于，能很舒服地查看到 SCOTT 用户下有四个表：BONUS、DEPT、EMP 和 SALGRADE。那么，再查询一下 DEPT 表吧。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> DEPT;</span><br></pre></td></tr></table></figure>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/1c7320f709ef054651820500f050fe0e.gif" alt="再查询一下DEPT表.gif"></p>
 <h3 id="切换用户">切换用户<a class="headerlink" href="#切换用户"></a></h3>
@@ -293,22 +293,22 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONN[ECT] 用户名/密码 [AS SYSDBA|SYSUSER]</span><br></pre></td></tr></table></figure>
 <p>登录 SYS 用户看看，由于 SYS 是超级管理员用户，命令如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONN SYS/change_on_install AS SYSDBA</span><br></pre></td></tr></table></figure>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/e55c8364facc5b7fe8dda63121f2f9c6.png" alt="切换到sys用户.png">
-登录 SYSTEM 用户看看，由于 SYSTEM 是普通管理员用户，命令如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/e55c8364facc5b7fe8dda63121f2f9c6.png" alt="切换到sys用户.png"></p>
+<p>登录 SYSTEM 用户看看，由于 SYSTEM 是普通管理员用户，命令如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONN SYSTEM/manager</span><br></pre></td></tr></table></figure>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/ec9dee24372800541c77fbaa824c635f.png" alt="切换到system用户.png">
-SYSTEM 用户和 SYS 用户都是管理员，应该是可以查询到 SCOTT 用户的 DEPT 表的，来试试。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/ec9dee24372800541c77fbaa824c635f.png" alt="切换到system用户.png"></p>
+<p>SYSTEM 用户和 SYS 用户都是管理员，应该是可以查询到 SCOTT 用户的 DEPT 表的，来试试。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> DEPT;</span><br></pre></td></tr></table></figure>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/78d43e0fa461a3da43e95cccdcb8afbf.png" alt="表或视图不存在.png">
-来确认一下当前用户是否是管理员用户。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/78d43e0fa461a3da43e95cccdcb8afbf.png" alt="表或视图不存在.png"></p>
+<p>来确认一下当前用户是否是管理员用户。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW USER</span><br></pre></td></tr></table></figure>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/4891eca420ce091258299c8f4aa60bf9.png" alt="SHOWUSER.png">
-这就奇怪了，难道不能查询到？原来，是需要在表前指定用户。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/4891eca420ce091258299c8f4aa60bf9.png" alt="SHOWUSER.png"></p>
+<p>这就奇怪了，难道不能查询到？原来，是需要在表前指定用户。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> SCOTT.DEPT;</span><br></pre></td></tr></table></figure>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/8123b6bd896f8c7d24a33dadacbb6563.png" alt="加用户名.png"></p>
 <h2 id="SQL">SQL<a class="headerlink" href="#SQL"></a></h2>
-<p>关系型数据库的理论诞生之后，世界上出现了许多的关系型数据库管理系统，熟悉了 A 关系型数据库管理系统后几乎还得重新学 B 关系型数据库管理系统，这很大程度上是由于每个关系型数据库管理系统都实现了自己的一套语言，语言只是一种工具，弄那么多套语言毫无意义，于是，SQL（Structured Query Language，即结构化查询语言）作为一个标准和一个功能强大的关系型数据库语言诞生了。
-SQL 分为以下几类：</p>
+<p>关系型数据库的理论诞生之后，世界上出现了许多的关系型数据库管理系统，熟悉了 A 关系型数据库管理系统后几乎还得重新学 B 关系型数据库管理系统，这很大程度上是由于每个关系型数据库管理系统都实现了自己的一套语言，语言只是一种工具，弄那么多套语言毫无意义，于是，SQL（Structured Query Language，即结构化查询语言）作为一个标准和一个功能强大的关系型数据库语言诞生了。</p>
+<p>SQL 分为以下几类：</p>
 <ul>
 <li>DML（Data Manipulation Language，数据操作语言）：数据查询（SELECT)、数据更新（UPDATE、INSERT 和 DELETE）和事务管理等。</li>
 <li>DDL（Data Definition Language，数据定义语言）：数据对象定义等（用户和数据表等）。</li>
@@ -326,8 +326,8 @@ SQL 分为以下几类：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC 数据表;</span><br></pre></td></tr></table></figure>
 <p>查看 DEPT 的结构：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC DEPT;</span><br></pre></td></tr></table></figure>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/db27a795564e07a020bdcbb016eed049.png" alt="DEPT的结构.png">
-DEPT 的结构解释：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/db27a795564e07a020bdcbb016eed049.png" alt="DEPT的结构.png"></p>
+<p>DEPT 的结构解释：</p>
 <table>
 <thead>
 <tr>
@@ -367,9 +367,9 @@ DEPT 的结构解释：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> EMP;</span><br></pre></td></tr></table></figure>
 <p>同样有显示问题，设置一行的长度为 150：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET LINESIZE 150</span><br></pre></td></tr></table></figure>
-<p>再查询 EMP：
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/fe0de0c3ab6e8ec2b0b94357641e112c.png" alt="EMP.png">
-查看 EMP 的结构：</p>
+<p>再查询 EMP：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/fe0de0c3ab6e8ec2b0b94357641e112c.png" alt="EMP.png"></p>
+<p>查看 EMP 的结构：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESC</span> EMP;</span><br></pre></td></tr></table></figure>
 <p>EMP 的结构解释：</p>
 <table>
@@ -446,8 +446,8 @@ DEPT 的结构解释：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> SALGRADE;</span><br></pre></td></tr></table></figure>
 <p>查看 SALGRADE 的结构：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESC</span> SALGRADE;</span><br></pre></td></tr></table></figure>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/d966bd263885c62ce5bbaf8911d60ef2.png" alt="SALGRADE.png">
-SALGRADE 的结构解释：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/d966bd263885c62ce5bbaf8911d60ef2.png" alt="SALGRADE.png"></p>
+<p>SALGRADE 的结构解释：</p>
 <table>
 <thead>
 <tr>
@@ -483,9 +483,9 @@ SALGRADE 的结构解释：</p>
 </tbody>
 </table>
 <h3 id="工资表（BONUS">工资表（BONUS)<a class="headerlink" href="#工资表（BONUS"></a></h3>
-<p>BONUS 表没有数据，只有表结构。
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/38c59b2a4f3f4be5ae359c04163b580b.png" alt="BONUS.png">
-BONUS 的结构解释：</p>
+<p>BONUS 表没有数据，只有表结构。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.imql.life/illustrations/38c59b2a4f3f4be5ae359c04163b580b.png" alt="BONUS.png"></p>
+<p>BONUS 的结构解释：</p>
 <table>
 <thead>
 <tr>
